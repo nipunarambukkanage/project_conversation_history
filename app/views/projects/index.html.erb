@@ -1,9 +1,36 @@
-<h1>Projects</h1>
+<div class="max-w-4xl mx-auto px-4 py-8">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">Projects</h1>
+    <%= link_to 'New Project', new_project_path, 
+                class: "px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition-colors shadow-sm" %>
+  </div>
 
-<%= link_to 'New Project', new_project_path %>
-
-<ul>
-    <% @projects.each do |project| %>
-    <li><%= link_to project.name, project %></li>
-    <% end %>
-</ul>
+  <% if @projects.any? %>
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200">
+      <div class="divide-y divide-gray-200">
+        <% @projects.each do |project| %>
+          <%= link_to project, class: "block hover:bg-gray-50 transition-colors" do %>
+            <div class="px-4 py-4 flex items-center justify-between">
+              <div class="flex items-center space-x-4">
+                <span class="text-lg font-medium text-gray-900"><%= project.name %></span>
+                <% if project.status.present? %>
+                  <span class="px-2.5 py-0.5 text-sm font-medium rounded-full 
+                              <%= status_color(project.status) %>">
+                    <%= project.status %>
+                  </span>
+                <% end %>
+              </div>
+              <svg class="h-5 w-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+              </svg>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% else %>
+    <div class="text-center py-12">
+      <p class="text-gray-500">No projects yet. Create your first project!</p>
+    </div>
+  <% end %>
+</div>

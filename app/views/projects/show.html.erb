@@ -1,29 +1,65 @@
-<h1><%= @project.name %></h1>
-<p>Status: <%= @project.status %></p>
+<div class="max-w-4xl mx-auto px-4 py-8">
 
-<h2>Comments</h2>
-<% if @comments.any? %>
-<%= render @comments %>
-<!-- For comments -->
-<%= paginate @comments %>
-<% else %>
-  <p>No comments yet.</p>
-<% end %>
+  <div class="mb-8">
+    <div class="flex items-center justify-between mb-4">
+      <h1 class="text-3xl font-bold text-gray-900"><%= @project.name %></h1>
+      <%= link_to 'Back to Projects', projects_path, class: "text-gray-600 hover:text-gray-900 hover:underline" %>
+    </div>
+    <div class="flex items-center space-x-2">
+      <span class="text-lg text-gray-600">Status:</span>
+      <span class="px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 text-sm font-medium">
+        <%= @project.status %>
+      </span>
+    </div>
+  </div>
 
-<h2>Leave a Comment</h2>
-<%= render 'comments/form' %>
+  <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 mb-8">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-xl font-semibold text-gray-900">Comments</h2>
+      <span class="text-gray-500 text-sm"><%= @comments.total_count %> comments</span>
+    </div>
 
-<h2>Status Changes</h2>
-<% if @status_changes.any? %>
-<%= render @status_changes %>
+    <% if @comments.any? %>
+      <div class="space-y-4 mb-6">
+        <%= render @comments %>
+      </div>
+      <div class="border-t border-gray-200 pt-4">
+        <%= paginate @comments %>
+      </div>
+    <% else %>
+      <div class="text-center py-4">
+        <p class="text-gray-500">No comments yet. Be the first to add one!</p>
+      </div>
+    <% end %>
 
-<!-- For status changes -->
-<%= paginate @status_changes %>
-<% else %>
-  <p>No status changes yet.</p>
-<% end %>
+    <div class="mt-8 pt-6 border-t border-gray-200">
+      <h3 class="text-lg font-medium mb-4">Leave a Comment</h3>
+      <%= render 'comments/form' %>
+    </div>
+  </div>
 
-<h2>Change Status</h2>
-<%= render 'status_changes/form' %>
+  <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200 mb-8">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-xl font-semibold text-gray-900">Status History</h2>
+      <span class="text-gray-500 text-sm"><%= @status_changes.total_count %> changes</span>
+    </div>
 
-<%= link_to 'Back', projects_path %>
+    <% if @status_changes.any? %>
+      <div class="space-y-4 mb-6">
+        <%= render @status_changes %>
+      </div>
+      <div class="border-t border-gray-200 pt-4">
+        <%= paginate @status_changes %>
+      </div>
+    <% else %>
+      <div class="text-center py-4">
+        <p class="text-gray-500">No status changes yet</p>
+      </div>
+    <% end %>
+
+    <div class="mt-8 pt-6 border-t border-gray-200">
+      <h3 class="text-lg font-medium mb-4">Update Status</h3>
+      <%= render 'status_changes/form' %>
+    </div>
+  </div>
+</div>

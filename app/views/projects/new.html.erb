@@ -1,5 +1,16 @@
-<h1>New Project</h1>
+<div class="max-w-xl mx-auto px-4 py-8">
+  <div class="flex items-center justify-between mb-8">
+    <h1 class="text-3xl font-bold text-gray-900">New Project</h1>
+    <%= link_to 'Back', projects_path, 
+                class: "text-gray-600 hover:text-gray-900 hover:bg-gray-100 px-3 py-2 rounded-md transition-colors" %>
+  </div>
 
-<%= render 'form' %>
+  <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+    <%= render 'form' %>
+  </div>
 
-<%= link_to 'Back', projects_path %>
+  <div class="mt-4 text-center">
+    <%= link_to 'Back to Projects', projects_path, 
+                class: "text-sm text-gray-600 hover:text-gray-900 hover:underline" %>
+  </div>
+</div>
