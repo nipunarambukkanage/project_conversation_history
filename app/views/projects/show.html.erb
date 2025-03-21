@@ -3,17 +3,20 @@
 
 <h2>Comments</h2>
 <%= render @comments %>
-<%= will_paginate @comments %>
+<!-- For comments -->
+<%= paginate @comments %>
 
 <h2>Leave a Comment</h2>
-<% render 'comments/form' %>
+<%= render 'comments/form' %>
 
 <h2>Status Changes</h2>
-<% render @status_changes %>
+<%= render @status_changes %>
 
-<%= will_paginate @status_changes %>
+<!-- For status changes -->
+<%= paginate @status_changes %>
 
 <h2>Change Status</h2>
-<% render 'status_changes/form' %>
+<%= render 'status_changes/form' %>
 
 <%= link_to 'Back', projects_path %>
+

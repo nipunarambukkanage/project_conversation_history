@@ -7,8 +7,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
-    @comments = @project.comments.paginate(page: params[:page], per_page: 10)
-    @status_changes = @project.status_changes.paginate(page: params[:page], per_page: 10)
+    @comments = @project.comments.page(params[:page]).per(10)
+    @status_changes = @project.status_changes.page(params[:page]).per(10)
   end
 
   def new

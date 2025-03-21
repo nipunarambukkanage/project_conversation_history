@@ -1,0 +1,10 @@
+<%= form_with model: [@project, @project.status_changes.build] do |form| %>
+  <div>
+    <%= form.label :new_status %>
+    <%= form.text_field :new_status %>
+  </div>
+
+  <div>
+    <%= form.submit 'Change Status' %>
+  </div>
+<% end %>
