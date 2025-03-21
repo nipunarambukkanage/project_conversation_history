@@ -2,21 +2,28 @@
 <p>Status: <%= @project.status %></p>
 
 <h2>Comments</h2>
+<% if @comments.any? %>
 <%= render @comments %>
 <!-- For comments -->
 <%= paginate @comments %>
+<% else %>
+  <p>No comments yet.</p>
+<% end %>
 
 <h2>Leave a Comment</h2>
 <%= render 'comments/form' %>
 
 <h2>Status Changes</h2>
+<% if @status_changes.any? %>
 <%= render @status_changes %>
 
 <!-- For status changes -->
 <%= paginate @status_changes %>
+<% else %>
+  <p>No status changes yet.</p>
+<% end %>
 
 <h2>Change Status</h2>
 <%= render 'status_changes/form' %>
 
 <%= link_to 'Back', projects_path %>
-

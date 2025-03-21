@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
     @comments = @project.comments.page(params[:page]).per(10)
     @status_changes = @project.status_changes.page(params[:page]).per(10)
   end
-
+  
   def new
     @project = Project.new
   end
