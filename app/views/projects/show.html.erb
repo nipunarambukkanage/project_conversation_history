@@ -1,0 +1,19 @@
+<h1><%= @project.name %></h1>
+<p>Status: <%= @project.status %></p>
+
+<h2>Comments</h2>
+<%= render @comments %>
+<%= will_paginate @comments %>
+
+<h2>Leave a Comment</h2>
+<% render 'comments/form' %>
+
+<h2>Status Changes</h2>
+<% render @status_changes %>
+
+<%= will_paginate @status_changes %>
+
+<h2>Change Status</h2>
+<% render 'status_changes/form' %>
+
+<%= link_to 'Back', projects_path %>
