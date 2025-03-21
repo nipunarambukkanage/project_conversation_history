@@ -37,7 +37,7 @@ A Ruby on Rails application for managing project discussions and status changes.
 
 2. **Setup**
    ```bash
-   git clone https://github.com/yourusername/project-conversation-history.git
+   git clone https://github.com/nipunarambukkanage/project-conversation-history.git
    cd project-conversation-history
    bundle install
    rails db:migrate
